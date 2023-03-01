@@ -8,7 +8,9 @@ $magix=@"
 	
 if ($answer -eq "yes") {
 	$answer2 = Read-Host "What is password"
-	if ($answer2 -eq "CyberPatriot1!") {
+	$answer2=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($answer2))
+	$checkANS=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("MTkxNDMzMUN5YmVyUGF0cmlvdA=="))
+	if ($checkANS -eq $answer2) {
 		Clear-Content C:\Windows\System32\drivers\etc\hosts -Force
 		$list = [System.Collections.Generic.List[object]]@("www.youtube.com","youtube.com","www.youtubekids.com","youtubekids.com")
   		Add-Content C:\Windows\System32\drivers\etc\hosts $magix
@@ -22,7 +24,9 @@ if ($answer -eq "no") {
 		exit
 	} elseif ($answer2 -eq "no") {
 		$answer3 = Read-Host "What is password"
-		if ($answer3 -eq "CyberPatriot1!") {
+		$answer3=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($answer2))
+		$checkANS=[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("MTkxNDMzMUN5YmVyUGF0cmlvdA=="))
+		if ($checkANS -eq $answer3) {
 			Clear-Content C:\Windows\System32\drivers\etc\hosts -Force
 			ipconfig /flushdns
 		}
